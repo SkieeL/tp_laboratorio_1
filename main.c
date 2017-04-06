@@ -20,14 +20,20 @@ int main()
     while(flagContinue == 's')
     {
         // Visualización del menú
-        if (verificarFloat(numeroA)) {
+        if (ingresoA == 'n') {
+            printf("\n1. Ingresar 1er operando (A = -)\n");
+        }
+        else if (verificarFloat(numeroA)) {
             printf("\n1. Ingresar 1er operando (A = %.4f)\n", numeroA);
         }
         else {
             printf("\n1. Ingresar 1er operando (A = %.0f)\n", numeroA);
         }
 
-        if (verificarFloat(numeroB)) {
+        if (ingresoB == 'n') {
+            printf("2. Ingresar 2do operando (B = -)\n");
+        }
+        else if (verificarFloat(numeroB)) {
             printf("2. Ingresar 2do operando (B = %.4f)\n", numeroB);
         }
         else {

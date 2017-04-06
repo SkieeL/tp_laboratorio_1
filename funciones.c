@@ -98,6 +98,11 @@ void multiplicarFloat(float numeroA, float numeroB) {
 void dividirFloat(float numeroA, float numeroB) {
     float resultado;
 
+    if (numeroB == 0.0) {
+        printf("ERROR: No se puede dividir un numero por 0\n");
+        return;
+    }
+
     // Realiza la división
     resultado = numeroA / numeroB;
 
