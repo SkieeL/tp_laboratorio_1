@@ -174,7 +174,7 @@ void ordenarPersonas(ePersona personas[], int len) {
             cantPersonas++;
 
             if (cantPersonas == 1) {
-                printf("ID\tNombre\tEdad\tDNI\n");
+                printf("Numero\tNombre\tEdad\tDNI\n");
             }
 
             printf("%d\t%s\t%d\t%d\n", cantPersonas, personas[i].nombrePer, personas[i].edadPer, personas[i].dniPer);
@@ -217,7 +217,7 @@ void mostrarGrafico(ePersona personas[], int len) {
     else {
         for (i = 0; i < numeroMayor; i++)
         {
-            printf("%d\t\t%s\t\t%s\t\t%s\n", numeroMayor-i, cantMenor18 >= (numeroMayor-i) ? "#" : "", cant19a35 >= (numeroMayor-i) ? "#" : "", cantMayor35 >= (numeroMayor-i) ? "#" : "");
+            printf("%d\t\t%s\t\t%s\t\t%s\n", numeroMayor-i, cantMenor18 >= (numeroMayor-i) ? "####" : "", cant19a35 >= (numeroMayor-i) ? "####" : "", cantMayor35 >= (numeroMayor-i) ? "####" : "");
         }
 
         printf("Cantidad\tMenor a 18\tEntre 19 y 35\tMayor a 35\n\n");
