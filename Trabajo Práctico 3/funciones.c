@@ -48,7 +48,6 @@ int agregarPelicula(eMovie* pelicula, int maxRegistros, FILE* archivo) {
         return 0;
     }
 
-    (pelicula+indexLibre)->idPelicula = indexLibre + 1;
     (pelicula+indexLibre)->estado = 1;
 
     pedirTitulo(pelicula, indexLibre);
@@ -140,7 +139,7 @@ void pedirDuracion(eMovie* pelicula, int indexLibre) {
 
     int num;
 
-    printf("Ingrese duracion: ");
+    printf("Ingrese la duracion (en minutos): ");
     scanf("%d", &num);
 
     while (!validarDuracion(num)) {
@@ -179,7 +178,7 @@ void pedirPuntaje(eMovie* pelicula, int indexLibre) {
 
     int num;
 
-    printf("Ingrese puntaje: ");
+    printf("Ingrese el puntaje (0-100): ");
     scanf("%d", &num);
 
     while (!validarPuntaje(num)) {
@@ -224,13 +223,13 @@ int borrarPelicula(eMovie* pelicula, int maxRegistros, FILE* archivo) {
     printf("Peliculas cargadas\n");
     printf("------------------\n\n");
 
-    printf("ID\tTitulo\n");
+    printf("Numero\tTitulo\n");
 
     for (i = 0; i < maxRegistros; i++) {
         if ((pelicula+i)->estado == 1) {
 
-            printf("%d\t%s\n", (pelicula+i)->idPelicula, (pelicula+i)->titulo);
             cantPeliculas++;
+            printf("%d\t%s\n", cantPeliculas, (pelicula+i)->titulo);
         }
     }
 
@@ -285,13 +284,13 @@ int modificarPelicula(eMovie* pelicula, int maxRegistros, FILE* archivo) {
     printf("Peliculas cargadas\n");
     printf("------------------\n\n");
 
-    printf("ID\tTitulo\n");
+    printf("Numero\tTitulo\n");
 
     for (i = 0; i < maxRegistros; i++) {
         if ((pelicula+i)->estado == 1) {
 
-            printf("%d\t%s\n", (pelicula+i)->idPelicula, (pelicula+i)->titulo);
             cantPeliculas++;
+            printf("%d\t%s\n", cantPeliculas, (pelicula+i)->titulo);
         }
     }
 
@@ -377,7 +376,7 @@ int generarPagina(eMovie* pelicula, int maxRegistros, char nombre_file[]) {
 
     fclose(archivoIndex);
 
-    printf("Archivo generado exitosamente!\n\n");
+    printf("Pagina web generada exitosamente!\n\n");
 
     return 1;
 }

@@ -6,7 +6,6 @@
 #define RUTA_ARCHIVO_HTM "index.html"
 
 typedef struct {
-    int idPelicula;
     char titulo[20];
     char genero[20];
     int duracion;
@@ -126,4 +125,4 @@ int modificarPelicula(eMovie* pelicula, int maxRegistros, FILE* archivo);
  */
 int generarPagina(eMovie* pelicula, int maxRegistros, char nombre_file[]);
 
-#endif // FUNCIONES_H_INCLUDED
+#endif
