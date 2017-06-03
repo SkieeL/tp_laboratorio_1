@@ -35,7 +35,7 @@ int lecturaCreacionArchivo(eMovie** peliculas, int* pMaxRegistros, FILE** archiv
 int agregarPelicula(eMovie** pelicula, int* pMaxRegistros, FILE** archivo);
 
 /**
- * Obtiene el primer índice libre del array, si no hay espacio, aumenta el tamaño en 5.
+ * Obtiene el primer índice libre del array, si no hay espacio, aumenta el tamaño del mismo en 5.
  * @param Puntero de punteros que apunta al puntero a buscar espacio.
  * @param Puntero que apunta al tamaño actual del array.
  * @return Retorna el primer índice disponible.
@@ -49,6 +49,13 @@ int obtenerEspacioLibre(eMovie** pelicula, int* pMaxRegistros);
  * @param Si el valor no es 0 agrega la palabra "nuevo" a la solicitud del ingreso de datos.
  */
 void pedirTitulo(eMovie** pelicula, int indexLibre, int modificar);
+
+/**
+ * Valida si el string está vacío o si contiene sólo espacios.
+ * @param String a validar.
+ * @return Si no está vacío ni contiene sólo espacios retorna 1, de lo contrario 0.
+ */
+int validarString(char cadena[]);
 
 /**
  * Solicita el ingreso del genero de la pelicula.
@@ -72,6 +79,13 @@ void pedirDuracion(eMovie** pelicula, int indexLibre, int modificar);
  * @return Si el dato ingresado es correcto devuelve 1, sino 0.
  */
 int validarDuracion(int num);
+
+/**
+ * Valida si es un número entero.
+ * @param Número a validar.
+ * @return Si es un número devuelve 1, sino 0.
+ */
+int validarInt(char numero[]);
 
 /**
  * Solicita el ingreso de la descripción de la pelicula.

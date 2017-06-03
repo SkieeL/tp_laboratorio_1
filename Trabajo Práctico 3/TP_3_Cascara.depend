@@ -47,11 +47,12 @@
 	<string.h>
 	"funciones.h"
 
-1496448226 c:\users\usuario\desktop\trabajo práctico 3\funciones.h
+1496452342 c:\users\usuario\desktop\trabajo práctico 3\funciones.h
 
-1496448255 source:c:\users\usuario\desktop\trabajo práctico 3\funciones.c
+1496452380 source:c:\users\usuario\desktop\trabajo práctico 3\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<ctype.h>
 	"funciones.h"
 

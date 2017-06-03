@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "funciones.h"
 
 int lecturaCreacionArchivo(eMovie** pelicula, int* pMaxRegistros, FILE** archivo) {
@@ -16,7 +17,7 @@ int lecturaCreacionArchivo(eMovie** pelicula, int* pMaxRegistros, FILE** archivo
         fwrite(*pelicula, sizeof(eMovie), *pMaxRegistros, *archivo);
     }
     else {
-        int indexLibre;
+        int indexLibre, cantPeliculas = 0;
 
         rewind(*archivo);
 
@@ -28,6 +29,8 @@ int lecturaCreacionArchivo(eMovie** pelicula, int* pMaxRegistros, FILE** archivo
             }
 
             fread(*pelicula+indexLibre, sizeof(eMovie), 1, *archivo);
+
+            cantPeliculas++;
         }
 
     }
@@ -117,9 +120,37 @@ void pedirTitulo(eMovie** pelicula, int indexLibre, int modificar) {
     fflush(stdin);
     gets(buffer);
 
+    while (!validarString(buffer)) {
+        printf("Titulo invalido, reingrese: ");
+        fflush(stdin);
+        gets(buffer);
+    }
+
     strcpy((*pelicula+indexLibre)->titulo, buffer);
 
     system("cls");
+}
+
+int validarString(char cadena[]) {
+    if (strcmp(cadena, "") == 0) {
+        system("cls");
+        printf("ERROR: Debe ingresar algun caracter\n");
+        return 0;
+    }
+
+    int len, i;
+    len = strlen(cadena);
+
+    for (i = 0; i < len; i++) {
+        if (cadena[i] != ' ') {
+            return 1;
+        }
+    }
+
+    system("cls");
+    printf("ERROR: No puede ingresar solo espacios\n");
+
+    return 0;
 }
 
 void pedirGenero(eMovie** pelicula, int indexLibre, int modificar) {
@@ -130,6 +161,12 @@ void pedirGenero(eMovie** pelicula, int indexLibre, int modificar) {
     fflush(stdin);
     gets(buffer);
 
+    while (!validarString(buffer)) {
+        printf("Genero invalido, reingrese: ");
+        fflush(stdin);
+        gets(buffer);
+    }
+
     strcpy((*pelicula+indexLibre)->genero, buffer);
 
     system("cls");
@@ -137,15 +174,20 @@ void pedirGenero(eMovie** pelicula, int indexLibre, int modificar) {
 
 void pedirDuracion(eMovie** pelicula, int indexLibre, int modificar) {
 
+    char buffer[1024];
     int num;
 
     printf("Ingrese la%s duracion (en minutos): ", modificar ? " nueva" : "");
-    scanf("%d", &num);
+    fflush(stdin);
+    gets(buffer);
+    num = atoi(buffer);
 
-    while (!validarDuracion(num)) {
+    while (!validarDuracion(num) || !validarInt(buffer)) {
         system("cls");
         printf("Duracion invalida, reingrese: ");
-        scanf("%d", &num);
+        fflush(stdin);
+        gets(buffer);
+        num = atoi(buffer);
     }
 
     (*pelicula+indexLibre)->duracion = num;
@@ -155,7 +197,21 @@ void pedirDuracion(eMovie** pelicula, int indexLibre, int modificar) {
 
 int validarDuracion(int num) {
     if (num < 1 || num > 500) {
+        system("cls");
         return 0;
+    }
+
+    return 1;
+}
+
+int validarInt(char numero[]) {
+    int len, i;
+    len = strlen(numero);
+
+    for (i = 0; i < len; i++) {
+        if (!isdigit(numero[i])) {
+            return 0;
+        }
     }
 
     return 1;
@@ -169,6 +225,12 @@ void pedirDescripcion(eMovie** pelicula, int indexLibre, int modificar) {
     fflush(stdin);
     gets(buffer);
 
+    while (!validarString(buffer)) {
+        printf("Descripcion invalida, reingrese: ");
+        fflush(stdin);
+        gets(buffer);
+    }
+
     strcpy((*pelicula+indexLibre)->descripcion, buffer);
 
     system("cls");
@@ -176,15 +238,20 @@ void pedirDescripcion(eMovie** pelicula, int indexLibre, int modificar) {
 
 void pedirPuntaje(eMovie** pelicula, int indexLibre, int modificar) {
 
+    char buffer[1024];
     int num;
 
     printf("Ingrese el%s puntaje (0-100): ", modificar ? " nuevo" : "");
-    scanf("%d", &num);
+    fflush(stdin);
+    gets(buffer);
+    num = atoi(buffer);
 
-    while (!validarPuntaje(num)) {
+    while (!validarPuntaje(num) || !validarInt(buffer)) {
         system("cls");
         printf("Puntaje invalido, reingrese: ");
-        scanf("%d", &num);
+        fflush(stdin);
+        gets(buffer);
+        num = atoi(buffer);
     }
 
     (*pelicula+indexLibre)->puntaje = num;
@@ -194,6 +261,7 @@ void pedirPuntaje(eMovie** pelicula, int indexLibre, int modificar) {
 
 int validarPuntaje(int num) {
     if (num < 1 || num > 100) {
+        system("cls");
         return 0;
     }
 
@@ -207,6 +275,12 @@ void pedirLink(eMovie** pelicula, int indexLibre, int modificar) {
     printf("Ingrese el%s link de la imagen: ", modificar ? " nuevo" : "");
     fflush(stdin);
     gets(buffer);
+
+    while (!validarString(buffer)) {
+        printf("Link invalido, reingrese: ");
+        fflush(stdin);
+        gets(buffer);
+    }
 
     strcpy((*pelicula+indexLibre)->linkImagen, buffer);
 
