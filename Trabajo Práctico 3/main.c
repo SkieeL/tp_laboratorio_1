@@ -8,6 +8,7 @@ int main()
     // Inicialización de variables.
     char flagContinuar = 's';
     int opcion, retorno, maxRegistros = REGISTROS_INICIALES;
+    int* pMaxRegistros = &maxRegistros;
     FILE* archivoBinario;
     eMovie* contenedorPeliculas;
 
@@ -16,7 +17,7 @@ int main()
 
     // Apertura del archivo binario.
     archivoBinario = fopen(RUTA_ARCHIVO_BIN, "rb");
-    retorno = lecturaCreacionArchivo(contenedorPeliculas, maxRegistros, archivoBinario);
+    retorno = lecturaCreacionArchivo(&contenedorPeliculas, pMaxRegistros, &archivoBinario);
 
     // Si hubo un error, cierra.
     if (!retorno) {
@@ -30,7 +31,7 @@ int main()
     while(flagContinuar == 's')
     {
         printf("1. Agregar pelicula\n");
-        printf("2. Borrar pelicula\n");
+        printf("2. Eliminar pelicula\n");
         printf("3. Modificar pelicula\n");
         printf("4. Generar pagina web\n");
         printf("5. Salir\n\n");
@@ -43,16 +44,16 @@ int main()
         switch(opcion)
         {
             case 1:
-                agregarPelicula(contenedorPeliculas, maxRegistros, archivoBinario);
+                agregarPelicula(&contenedorPeliculas, pMaxRegistros, &archivoBinario);
                 break;
             case 2:
-                borrarPelicula(contenedorPeliculas, maxRegistros, archivoBinario);
+                eliminarPelicula(&contenedorPeliculas, maxRegistros, &archivoBinario);
                 break;
             case 3:
-                modificarPelicula(contenedorPeliculas, maxRegistros, archivoBinario);
+                modificarPelicula(&contenedorPeliculas, maxRegistros, &archivoBinario);
                 break;
             case 4:
-                generarPagina(contenedorPeliculas, maxRegistros, RUTA_ARCHIVO_HTM);
+                generarPagina(&contenedorPeliculas, maxRegistros, RUTA_ARCHIVO_HTM);
                 break;
             case 5:
                 printf("Hasta pronto!\n");

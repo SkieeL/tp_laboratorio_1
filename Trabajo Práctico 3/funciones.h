@@ -18,50 +18,53 @@ typedef struct {
 
 /**
  * Lee la información del archivo y en caso de que no exista, lo crea.
- * @param Puntero al contenedor de películas.
- * @param Tamaño actual del array.
- * @param Archivo binario a leer o crear.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
+ * @param Puntero que apunta al tamaño actual del array.
+ * @param Puntero de punteros que apunta al puntero del archivo binario a leer o crear.
  * @return Retorna 1 o 0 dependiendo si pudo leer y/o crear el archivo o no.
  */
-int lecturaCreacionArchivo(eMovie* peliculas, int maxRegistros, FILE* archivo);
+int lecturaCreacionArchivo(eMovie** peliculas, int* pMaxRegistros, FILE** archivo);
 
 /**
  * Agrega una película al archivo binario.
- * @param Puntero al contenedor de películas.
- * @param Tamaño actual del array.
- * @param Archivo binario a escribir.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
+ * @param Puntero que apunta al tamaño actual del array.
+ * @param Puntero de punteros que apunta al puntero del archivo binario a escribir.
  * @return Retorna 1 o 0 dependiendo si pudo agregar o no la pelicula.
  */
-int agregarPelicula(eMovie* pelicula, int maxRegistros, FILE* archivo);
+int agregarPelicula(eMovie** pelicula, int* pMaxRegistros, FILE** archivo);
 
 /**
  * Obtiene el primer índice libre del array, si no hay espacio, aumenta el tamaño en 5.
- * @param Puntero al array a buscar espacio libre.
- * @param Tamaño actual del array.
+ * @param Puntero de punteros que apunta al puntero a buscar espacio.
+ * @param Puntero que apunta al tamaño actual del array.
  * @return Retorna el primer índice disponible.
  */
-int obtenerEspacioLibre(eMovie* pelicula, int maxRegistros);
+int obtenerEspacioLibre(eMovie** pelicula, int* pMaxRegistros);
 
 /**
  * Solicita el ingreso del título de la pelicula.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Índice donde se guarda el título ingresado.
+ * @param Si el valor no es 0 agrega la palabra "nuevo" a la solicitud del ingreso de datos.
  */
-void pedirTitulo(eMovie* pelicula, int indexLibre);
+void pedirTitulo(eMovie** pelicula, int indexLibre, int modificar);
 
 /**
  * Solicita el ingreso del genero de la pelicula.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Índice donde se guarda el genero ingresado.
+ * @param Si el valor no es 0 agrega la palabra "nuevo" a la solicitud del ingreso de datos.
  */
-void pedirGenero(eMovie* pelicula, int indexLibre);
+void pedirGenero(eMovie** pelicula, int indexLibre, int modificar);
 
 /**
  * Solicita el ingreso de la duración de la pelicula.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Índice donde se guarda la duración ingresada.
+ * @param Si el valor no es 0 agrega la palabra "nueva" a la solicitud del ingreso de datos.
  */
-void pedirDuracion(eMovie* pelicula, int indexLibre);
+void pedirDuracion(eMovie** pelicula, int indexLibre, int modificar);
 
 /**
  * Valida la duración ingresada.
@@ -72,17 +75,19 @@ int validarDuracion(int num);
 
 /**
  * Solicita el ingreso de la descripción de la pelicula.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Índice donde se guarda la descripción ingresada.
+ * @param Si el valor no es 0 agrega la palabra "nueva" a la solicitud del ingreso de datos.
  */
-void pedirDescripcion(eMovie* pelicula, int indexLibre);
+void pedirDescripcion(eMovie** pelicula, int indexLibre, int modificar);
 
 /**
  * Solicita el ingreso del puntaje de la pelicula.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Índice donde se guarda el puntaje ingresado.
+ * @param Si el valor no es 0 agrega la palabra "nuevo" a la solicitud del ingreso de datos.
  */
-void pedirPuntaje(eMovie* pelicula, int indexLibre);
+void pedirPuntaje(eMovie** pelicula, int indexLibre, int modificar);
 
 /**
  * Valida el puntaje ingresado.
@@ -93,36 +98,37 @@ int validarPuntaje(int num);
 
 /**
  * Solicita el ingreso del link a la imagen de portada de la pelicula.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Índice donde se guarda el link a la imagen de portada ingresado.
+ * @param Si el valor no es 0 agrega la palabra "nuevo" a la solicitud del ingreso de datos.
  */
-void pedirLink(eMovie* pelicula, int indexLibre);
+void pedirLink(eMovie** pelicula, int indexLibre, int modificar);
 
 /**
  * Elimina una pelicula del archivo binario.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Tamaño actual del array.
- * @param Archivo binario a escribir.
- * @return Retorna 1 o 0 dependiendo si pudo borrar o no la pelicula.
+ * @param Puntero de punteros que apunta al puntero del archivo binario a escribir.
+ * @return Retorna 1 o 0 dependiendo si pudo eliminar o no la pelicula.
  */
-int borrarPelicula(eMovie* pelicula, int maxRegistros, FILE* archivo);
+int eliminarPelicula(eMovie** pelicula, int maxRegistros, FILE** archivo);
 
 /**
  * Modifica una pelicula del archivo binario.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Tamaño actual del array.
- * @param Archivo binario a escribir.
+ * @param Puntero de punteros que apunta al puntero del archivo binario a escribir.
  * @return Retorna 1 o 0 dependiendo si pudo modificar o no la pelicula.
  */
-int modificarPelicula(eMovie* pelicula, int maxRegistros, FILE* archivo);
+int modificarPelicula(eMovie** pelicula, int maxRegistros, FILE** archivo);
 
 /**
  * Genera un archivo html a partir de las peliculas cargadas en el archivo binario.
- * @param Puntero al contenedor de películas.
+ * @param Puntero de punteros que apunta al puntero del contenedor de películas.
  * @param Tamaño actual del array.
  * @param Nombre del archivo a generar.
  * @return Retorna 1 o 0 dependiendo si pudo generar o no el archivo.
  */
-int generarPagina(eMovie* pelicula, int maxRegistros, char nombre_file[]);
+int generarPagina(eMovie** pelicula, int maxRegistros, char nombre_file[]);
 
 #endif
