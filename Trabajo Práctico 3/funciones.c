@@ -417,7 +417,20 @@ int modificarPelicula(eMovie** pelicula, int maxRegistros, FILE** archivo) {
 
 int generarPagina(eMovie** pelicula, int maxRegistros, char nombre_file[]) {
     FILE* archivoIndex;
-    int i;
+    int i, cantPeliculas = 0;
+
+    for (i = 0; i < maxRegistros; i++) {
+        if ((*pelicula+i)->estado == 1) {
+            cantPeliculas++;
+        }
+    }
+
+    if (!cantPeliculas) {
+        system("cls");
+
+        printf("No se puede generar la pagina web si no hay peliculas cargadas\n\n");
+        return 0;
+    }
 
     archivoIndex = fopen(nombre_file, "w");
 

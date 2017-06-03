@@ -56,3 +56,18 @@
 	<ctype.h>
 	"funciones.h"
 
+1496452380 source:c:\users\usuario\desktop\utn\tp3 v2.0\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1496452342 c:\users\usuario\desktop\utn\tp3 v2.0\funciones.h
+
+1496447815 source:c:\users\usuario\desktop\utn\tp3 v2.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
