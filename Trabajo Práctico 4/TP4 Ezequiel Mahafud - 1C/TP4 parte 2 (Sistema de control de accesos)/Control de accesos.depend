@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1497665514 source:c:\users\usuario\desktop\tp4 control de accesos\arraylist.c
+	<stdlib.h>
+	"ArrayList.h"
+
+1497328048 c:\users\usuario\desktop\tp4 control de accesos\arraylist.h
+
+1497665453 source:c:\users\usuario\desktop\tp4 control de accesos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"ArrayList.h"
+	"funciones.h"
+
+1497665401 source:c:\users\usuario\desktop\tp4 control de accesos\funciones.c
+	"funciones.h"
+	"ArrayList.h"
+
+1497665489 c:\users\usuario\desktop\tp4 control de accesos\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"ArrayList.h"
+
+1497665402 source:c:\users\eze\desktop\tp4 mahafud\tp4 parte 2 (sistema de control de accesos)\funciones.c
+	"funciones.h"
+	"ArrayList.h"
+
+1497665490 c:\users\eze\desktop\tp4 mahafud\tp4 parte 2 (sistema de control de accesos)\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"ArrayList.h"
+
+1497671402 c:\users\eze\desktop\tp4 mahafud\tp4 parte 2 (sistema de control de accesos)\arraylist.h
+
+1497665532 source:c:\users\eze\desktop\tp4 mahafud\tp4 parte 2 (sistema de control de accesos)\main.c
+	"ArrayList.h"
+	"funciones.h"
+
